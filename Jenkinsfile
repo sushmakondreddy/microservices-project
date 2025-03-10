@@ -5,12 +5,9 @@ pipeline {
         stage('Build & Tag Docker Image') {
             steps {
                 script {
-                    dir('src') {
-
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker build -t sushmakondreddy/cartservice:latest ."
+                        sh "docker build -t sushmakondreddy/adservice:latest ."
                     }
-                        }
                 }
             }
         }
@@ -19,7 +16,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker push sushmakondreddy/cartservice:latest "
+                        sh "docker push sushmakondreddy/adservice:latest "
                     }
                 }
             }
